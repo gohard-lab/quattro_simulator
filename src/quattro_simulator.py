@@ -11,10 +11,13 @@ from tracker_web import log_app_usage
 # plt.rc('font', family='Malgun Gothic')
 # plt.rcParams['axes.unicode_minus'] = False
 
-# 폰트 파일의 상대 경로 지정 (코드와 같은 폴더에 폰트가 있을 경우)
-font_path = "NanumGothic.ttf" 
+# 1. 현재 실행 중인 파이썬 파일(quattro_simulator.py)이 위치한 폴더(src)의 절대 경로를 강제로 가져옴
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# 폰트 매니저를 통해 폰트 이름 추출 및 적용
+# 2. 그 폴더 안에 있는 폰트 파일과 정확히 연결
+font_path = os.path.join(current_dir, "NanumGothic.ttf")
+
+# 3. 폰트 적용
 font_name = fm.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False

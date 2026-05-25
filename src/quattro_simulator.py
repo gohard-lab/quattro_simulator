@@ -11,13 +11,14 @@ from tracker_web import log_app_usage
 # plt.rc('font', family='Malgun Gothic')
 # plt.rcParams['axes.unicode_minus'] = False
 
-# 1. 현재 실행 중인 파이썬 파일(quattro_simulator.py)이 위치한 폴더(src)의 절대 경로를 강제로 가져옴
+# 1. 폰트 경로 설정
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# 2. 그 폴더 안에 있는 폰트 파일과 정확히 연결
 font_path = os.path.join(current_dir, "NanumGothic.ttf")
 
-# 3. 폰트 적용
+# 2. ★ 핵심 추가: Matplotlib 시스템 메모리에 이 폰트를 강제로 밀어 넣습니다!
+fm.fontManager.addfont(font_path)
+
+# 3. 주입된 폰트의 이름을 가져와서 기본 폰트로 확정
 font_name = fm.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False

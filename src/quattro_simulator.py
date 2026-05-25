@@ -1,11 +1,25 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import json
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os
+
 from tracker_web import log_app_usage
 
 # 💡 한글 폰트 깨짐 방지 설정
-plt.rc('font', family='Malgun Gothic')
+# plt.rc('font', family='Malgun Gothic')
+# plt.rcParams['axes.unicode_minus'] = False
+
+# 폰트 파일의 상대 경로 지정 (코드와 같은 폴더에 폰트가 있을 경우)
+font_path = "NanumGothic.ttf" 
+
+# 폰트 매니저를 통해 폰트 이름 추출 및 적용
+font_name = fm.FontProperties(fname=font_path).get_name()
+plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False
+
+
 
 # --- 1. 기본 데이터 및 앱 환경 세팅 ---
 st.set_page_config(page_title="접지력 시뮬레이터", layout="centered")

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import os
 
-from tracker_web import log_app_usage
+from tracker_hub import log_app_usage
 
 # 💡 한글 폰트 깨짐 방지 설정
 # plt.rc('font', family='Malgun Gothic')
